@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <title>GDB Demo</title>
+  </head>
+  <body>
+    <div class="container" id="main">
+      <div class="container" id="header">
+        <h1>GDB</h1>
+      </div>
+      <div class="container" id="input">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="输入Gremlin或Cypher查询语句"
+            id="input-dsl"
+            autofocus="autofocus"
+            value=""
+          />
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="button" id="btn-go">
+              <span class="glyphicon glyphicon-search"></span> 查询
+            </button>
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              id="btnLayout"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+            >
+              <span class="caret"></span>
+              力导向布局
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li value="random"><a href="#">随机布局</a></li>
+              <li value="force"><a href="#">力导向布局</a></li>
+              <li value="circlar"><a href="#">环形布局</a></li>
+              <li value="radial"><a href="#">辐射布局</a></li>
+              <li value="dagre"><a href="#">层次布局</a></li>
+              <li value="concentric"><a href="#">同心圆布局</a></li>
+              <li value="grid"><a href="#">网格布局</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- input -->
+    </div>
+    <!-- main -->
+    <div class="container-fluid">
+      <div style="height: 800px;">
+        <div class="left-bar" id="details">
+          <div id="settings">
+            <form>
+              <div class="form-group">
+                <div class="row">
+                  <div class="setting-label col-sm-5">
+                    <label for="nodeText">点文字</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nodeText"
+                      placeholder="label/id/property"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="setting-label col-sm-5">
+                    <label for="nodeColor">点着色</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nodeColor"
+                      placeholder="label/property"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="setting-label col-sm-5">
+                    <label for="edgeText">边文字</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="edgeText"
+                      placeholder="label/id/property"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="setting-label col-sm-5">
+                    <label for="edgeColor">边着色</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="edgeColor"
+                      placeholder="label/property"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div>
+            <table class="table table-condensed">
+              <thead>
+                <tr id="id"></tr>
+              </thead>
+              <tbody id="props"></tbody>
+            </table>
+          </div>
+        </div>
+        <div style="height: 800px;" id="mountNode"></div>
+      </div>
+    </div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
