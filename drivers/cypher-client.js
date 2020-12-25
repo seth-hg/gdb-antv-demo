@@ -20,6 +20,8 @@ class Observer {
         row[key] = this.parseRelationship(element);
       } else if (neo4j_types.isPath(element)) {
         row[key] = this.parsePath(element);
+      } else if (Array.isArray(element)) {
+        row[key] = this.parseArray(element);
       } else {
         row[key] = element;
       }
@@ -28,7 +30,7 @@ class Observer {
   };
 
   onCompleted = (summary) => {
-    this.session.close().then(() => {});
+    this.session.close().then(() => { });
   };
 
   onError = (error) => {
@@ -102,9 +104,23 @@ class Observer {
     return s;
   };
 
-  nodeToString = (node) => {};
+  parseArray = (array) => {
+    var result = [];
+    array.forEach(e => {
+      if (neo4j_types.isNode(e)) {
+        result.push(this.parseNode(e));
+      } else if (neo4j_types.isRelationship(e)) {
+        result.push(this.parseRelationship(e));
+      } else if (neo4j_types.isPath(e)) {
+        result.push(this.parsePath(e));
+      }
+    });
+    return result;
+  };
 
-  relationshipToString = () => {};
+  nodeToString = (node) => { };
+
+  relationshipToString = () => { };
 }
 
 class CypherClient extends BaseClient {
@@ -113,7 +129,7 @@ class CypherClient extends BaseClient {
     this.client = neo4j.driver(endpoint, neo4j.auth.basic(username, password));
   }
 
-  open() {}
+  open() { }
 
   run = async function (query, bindings) {
     const session = this.client.session();
@@ -180,9 +196,9 @@ class CypherClient extends BaseClient {
     };
   };
 
-  parseRelationship = (relationship) => {};
+  parseRelationship = (relationship) => { };
 
-  parsePath = (path) => {};
+  parsePath = (path) => { };
 }
 
 module.exports = CypherClient;
