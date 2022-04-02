@@ -1,5 +1,7 @@
 # GDB 可视化 demo
 
+**已弃用，参考：https://github.com/aliyun/alibabacloud-gdb-console**
+
 使用 [AntV G6](https://antv-g6.gitee.io/zh) 对 GDB 查询结果进行可视化。支持 Gremlin 和 Cypher。
 
 ## 运行
